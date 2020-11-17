@@ -140,3 +140,4 @@ If you think it should, please send a report to bug-gnu-emacs@gnu.org.
 Check 'etc/MACHINES' for recognized configuration names.
 ```
 But it did help me to test yet another bunch of packages. 
+Ironically, the emacs.app (emacsformacosx) [downloaded from GNU website](https://emacsformacosx.com/download/emacs-builds/Emacs-27.1-1-universal.dmg) works, guess I will stick to it before neovim or emacs builds natively.
