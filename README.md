@@ -76,4 +76,42 @@ export PATH="/opt/homebrew/bin:$PATH"
 ### Formula
 Brew has not yet provided packages precompiled for arm macs. The best way to install is with the `brew install -s <fomula>` command. As explained by homebrew, it will "Compile formula from source even if a bottle is provided. Dependencies will still be installed from bottles if they are available."
 The list of supported packages can be found [here](https://github.com/Homebrew/brew/issues/7857)
-I've successfully compiled gettext, libunistring, pkg-config, libidn2, openssl@1.1, wget on my local machine, and I will upload the binaries as bottles to save some compile time. 
+
+I've successfully compiled several binaries on my local machine, and I will upload the binaries as bottles to save some compile time. 
+
+List of the packages I've successfully compiled
+```
+autoconf	gettext		libidn2		libunistring	luajit		pcre2		sphinx-doc	wget
+automake	git		libssh2		libuv		luarocks	pkg-config	sqlite		xz
+cmake		libgit2		libtermkey	libvterm	msgpack		python@3.9	tree-sitter
+gdbm		libiconv	libtool		lua		openssl@1.1	readline	unibilium
+```
+
+Problems I've encountered:
+While compiling neovim, I found that the system fails to recogonize my luajit installation and keeps sending me the error:
+`Lua interpreter not found at /opt/homebrew/opt/luajit`
+
+I solved this issue by creating a symlink within the `/opt/homebrew/opt/luajit/bin` folder that redirects lua to luajit,
+```bash
+cd /opt/homebrew/opt/luajit/bin
+ln luajit-2.1.0-beta3 lua
+```
+
+However, even after this issue is fixed, I still get the error:
+```
+cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/vimball && /opt/homebrew/Cellar/cmake/3.18.4/bin/cmake -E copy_directory /tmp/neovim-20201117-74316-1uv0si9/runtime/pack/dist/opt/vimball /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/vimball
+cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/matchit && /opt/homebrew/Cellar/cmake/3.18.4/bin/cmake -E copy_directory /tmp/neovim-20201117-74316-1uv0si9/runtime/pack/dist/opt/matchit /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/matchit
+cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime && /opt/homebrew/Cellar/cmake/3.18.4/bin/cmake -E copy_directory /tmp/neovim-20201117-74316-1uv0si9/runtime/doc doc
+cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/vimball && /tmp/neovim-20201117-74316-1uv0si9/build/bin/nvim -u NONE -i NONE -e --headless -c helptags\ doc -c quit
+cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/matchit && /tmp/neovim-20201117-74316-1uv0si9/build/bin/nvim -u NONE -i NONE -e --headless -c helptags\ doc -c quit
+/bin/sh: line 1: 77744 Killed: 9               /tmp/neovim-20201117-74316-1uv0si9/build/bin/nvim -u NONE -i NONE -e --headless -c helptags\ doc -c quit
+/bin/sh: line 1: 77743 Killed: 9               /tmp/neovim-20201117-74316-1uv0si9/build/bin/nvim -u NONE -i NONE -e --headless -c helptags\ doc -c quit
+make[2]: *** [runtime/pack/dist/opt/matchit/doc/tags] Error 137
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [runtime/pack/dist/opt/vimball/doc/tags] Error 137
+cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime && /tmp/neovim-20201117-74316-1uv0si9/build/bin/nvim -u NONE -i NONE -e --headless -c helptags\ ++t\ doc -c quit
+/bin/sh: line 1: 77746 Killed: 9               /tmp/neovim-20201117-74316-1uv0si9/build/bin/nvim -u NONE -i NONE -e --headless -c helptags\ ++t\ doc -c quit
+make[2]: *** [runtime/doc/tags] Error 137
+make[1]: *** [runtime/CMakeFiles/runtime.dir/all] Error 2
+make: *** [all] Error 2
+```
