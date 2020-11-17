@@ -10,6 +10,18 @@ The first time you launches a x86-64 application on your mac, it will automatica
 
 Rumors said that it takes 20 secs to load Microsoft Word at the first launch for the translation; however, it only takes 6.89 secs to open on my machine, which is as fast as, if not faster, than the loadtime on my 16 inch MacBook Pro. I don't know if it's because it's already translated when I was installing the app or Microsoft/Apple has done some optimization. For other apps, e.g. IINA, that runs with x86, even the first launch is as quick as you would expect on a new machine, most of which are under 5 secs. It's quite impressive.  
 
+## Xcode build
+If choose to use the git provided by xcode, after installing Xcode, you will have to agree with their license
+``` bash
+You have not agreed to the Xcode license agreements. You must agree to both license agreements below in order to use Xcode.
+
+Hit the Return key to view the license agreements at '/Applications/Xcode.app/Contents/Resources/English.lproj/License.rtf'
+
+Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry this command.
+```
+Simply use its command, press space to continue and q to exit, and then type agree to agree the license. 
+Then commands like git, make will be available. 
+
 ## Homebrew
 [Homebrew](https://github.com/Homebrew/brew) is not (yet) officially supported on Apple Silicon Macs, and their teams are working on it.  
 They have provided a detailed list of how core formulaes are supported. You can find that list [here](https://github.com/Homebrew/brew/issues/7857).
@@ -27,7 +39,7 @@ mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar 
 sudo mv homebrew /opt/homebrew
 ```
 
-This way homebrew will be installed to the /opt/homebrew folder. We can then initiate homebrew by cd to that directory and run brew under the bin folder. 
+This way homebrew will be installed to the /opt/homebrew folder. We can then initiate homebrew by cd to that directory and run brew in the bin folder. 
 
 ``` bash
 cd /opt/homebrew/bin
@@ -61,3 +73,7 @@ For macOS Big Sur, the default shell is zsh. You can create a .zshrc file in you
 ``` zsh
 export PATH="/opt/homebrew/bin:$PATH"
 ```
+### Formula
+Brew has not yet provided packages precompiled for arm macs. The best way to install is with the `brew install -s <fomula>` command. As explained by homebrew, it will "Compile formula from source even if a bottle is provided. Dependencies will still be installed from bottles if they are available."
+The list of supported packages can be found [here](https://github.com/Homebrew/brew/issues/7857)
+I've successfully compiled gettext, libunistring, pkg-config, libidn2, openssl@1.1, wget on my local machine, and I will upload the binaries as bottles to save some compile time. 
