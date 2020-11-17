@@ -115,3 +115,19 @@ make[2]: *** [runtime/doc/tags] Error 137
 make[1]: *** [runtime/CMakeFiles/runtime.dir/all] Error 2
 make: *** [all] Error 2
 ```
+Seeing that I cannot build neovim, I turned to emacs,
+
+The prebuilt version for x86 cannot be run using Rosetta. It crashes at launchtime,
+
+When I try to compile emacs myself, I failed yet again,
+
+```
+checking for xcrun... xcrun
+checking for make... yes
+checking for GNU Make... make
+checking build system type... arm-apple-darwin20.1.0
+checking host system type... arm-apple-darwin20.1.0
+configure: error: Emacs does not support 'arm-apple-darwin20.1.0' systems.
+If you think it should, please send a report to bug-gnu-emacs@gnu.org.
+Check 'etc/MACHINES' for recognized configuration names.
+```
