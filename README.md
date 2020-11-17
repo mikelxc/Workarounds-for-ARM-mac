@@ -81,10 +81,18 @@ I've successfully compiled several binaries on my local machine, and I will uplo
 
 List of the packages I've successfully compiled
 ```
-autoconf	gettext		libidn2		libunistring	luajit		pcre2		sphinx-doc	wget
-automake	git		libssh2		libuv		luarocks	pkg-config	sqlite		xz
-cmake		libgit2		libtermkey	libvterm	msgpack		python@3.9	tree-sitter
-gdbm		libiconv	libtool		lua		openssl@1.1	readline	unibilium
+autoconf	gnutls		libmpc		luarocks	sqlite
+automake	guile		libssh2		mpfr		texinfo
+bdw-gc		isl		libtasn1	msgpack		tree-sitter
+cmake		jansson		libtermkey	ncurses		unbound
+coreutils	jpeg		libtiff		nettle		unibilium
+curl		libatomic_ops	libtool		openssl@1.1	wget
+expat		libevent	libunistring	p11-kit		xz
+gdbm		libffi		libuv		pcre2		zlib
+gettext		libgit2		libvterm	pkg-config
+git		libgpg-error	little-cms2	python@3.9
+gmp		libiconv	lua		readline
+gnu-sed		libidn2		luajit		sphinx-doc
 ```
 
 Problems I've encountered:
@@ -131,3 +139,4 @@ configure: error: Emacs does not support 'arm-apple-darwin20.1.0' systems.
 If you think it should, please send a report to bug-gnu-emacs@gnu.org.
 Check 'etc/MACHINES' for recognized configuration names.
 ```
+But it did help me to test yet another bunch of packages. 
