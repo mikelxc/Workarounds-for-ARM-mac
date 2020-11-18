@@ -1,7 +1,7 @@
 # Workarounds for ARM-based Apple-Silicon Mac
 This is how I get most of my configurations work with MacBook Pro (13, M1, 2020)
 Tested on macOS Big Sur (11.0.1)
-Created on Nov 17, 2020 Last update: Nov 17, 2020
+Created on Nov 17, 2020 Last update: Nov 18, 2020
 
 ## Rosetta2
 At the time of the writing (Nov 17), most of the applications are not (yet) supported by this new architecture and most of the applications will run with Rosetta2 created by Apple. 
@@ -96,16 +96,16 @@ gnu-sed		libidn2		luajit		sphinx-doc
 ```
 
 Problems I've encountered:
-While compiling neovim, I found that the system fails to recogonize my luajit installation and keeps sending me the error:
+~~While compiling neovim, I found that the system fails to recogonize my luajit installation and keeps sending me the error:
 `Lua interpreter not found at /opt/homebrew/opt/luajit`
 
-I solved this issue by creating a symlink within the `/opt/homebrew/opt/luajit/bin` folder that redirects lua to luajit,
+~~I solved this issue by creating a symlink within the `/opt/homebrew/opt/luajit/bin` folder that redirects lua to luajit,
 ```bash
 cd /opt/homebrew/opt/luajit/bin
 ln luajit-2.1.0-beta3 lua
 ```
 
-However, even after this issue is fixed, I still get the error:
+~~However, even after this issue is fixed, I still get the error:
 ```
 cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/vimball && /opt/homebrew/Cellar/cmake/3.18.4/bin/cmake -E copy_directory /tmp/neovim-20201117-74316-1uv0si9/runtime/pack/dist/opt/vimball /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/vimball
 cd /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/matchit && /opt/homebrew/Cellar/cmake/3.18.4/bin/cmake -E copy_directory /tmp/neovim-20201117-74316-1uv0si9/runtime/pack/dist/opt/matchit /tmp/neovim-20201117-74316-1uv0si9/build/runtime/pack/dist/opt/matchit
@@ -123,6 +123,8 @@ make[2]: *** [runtime/doc/tags] Error 137
 make[1]: *** [runtime/CMakeFiles/runtime.dir/all] Error 2
 make: *** [all] Error 2
 ```
+~~ Neovim now builds with [this pull request](https://github.com/neovim/neovim/pull/12624)
+
 Seeing that I cannot build neovim, I turned to emacs,
 
 The prebuilt version for x86 cannot be run using Rosetta. It crashes at launchtime,
