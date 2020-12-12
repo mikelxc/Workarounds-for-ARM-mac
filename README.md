@@ -1,7 +1,7 @@
 # Workarounds for ARM-based Apple-Silicon Mac
 This is how I get most of my configurations work with MacBook Pro (13, M1, 2020)
 Tested on macOS Big Sur (11.0.1)
-Created on Nov 17, 2020 Last update: Nov 18, 2020
+Created on Nov 17, 2020 Last update: Dec 12, 2020
 
 ## Rosetta2
 At the time of the writing (Nov 17), most of the applications are not (yet) supported by this new architecture and most of the applications will run with Rosetta2 created by Apple. 
@@ -143,3 +143,7 @@ Check 'etc/MACHINES' for recognized configuration names.
 ```
 But it did help me to test yet another bunch of packages. 
 Ironically, the emacs.app (emacsformacosx) [downloaded from GNU website](https://emacsformacosx.com/download/emacs-builds/Emacs-27.1-1-universal.dmg) works, guess I will stick to it before neovim or emacs builds natively.
+
+Docker desktop 3.0 has just released, but Apple silicon is still not yet supported.
+## Games
+Found a [great site](https://applesilicongames.com/) that has all the games that runs on Apple silicon Mac 
