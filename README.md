@@ -1,7 +1,12 @@
 # Workarounds for ARM-based Apple-Silicon Mac
 This is how I get most of my configurations work with MacBook Pro (13, M1, 2020)
 Tested on macOS Big Sur (11.0.1)
-Created on Nov 17, 2020 Last update: Dec 12, 2020
+Created on Nov 17, 2020 Last update: Jan 2, 2021
+
+## Updates
+A new version of homebrew has been released that supports Apple-Silicon Mac natively. You can install the latest version (2.7.1 or above) and get things up and running. Some packages are now offering prebuilt bottles for arm macs. You can just download and pour the bottles instead of building all the packages from source. Some packages might still require you to build them from source, but there has been few compatibility issues. The whole process is much easier now compared to a few months ago when I first wrote this guide. 
+
+Docker has also released their [tech preview](https://docs.docker.com/docker-for-mac/apple-m1/) for ARM mac, and I can get most of my daily tasks up and running with it.
 
 ## Rosetta2
 At the time of the writing (Nov 17), most of the applications are not (yet) supported by this new architecture and most of the applications will run with Rosetta2 created by Apple. 
@@ -147,3 +152,7 @@ Ironically, the emacs.app (emacsformacosx) [downloaded from GNU website](https:/
 Docker desktop 3.0 has just released, but Apple silicon is still not yet supported.
 ## Games
 Found a [great site](https://applesilicongames.com/) that has all the games that runs on Apple silicon Mac 
+
+## Windows 
+I don't miss windows at all, and I do have a windows desktoop for gaming. But I've installed a windwos VM.
+Parallels Desktop is now supported on ARM mac. I tested [ACVM](https://github.com/KhaosT/ACVM) on my machine and it outperfroms SurfaceX.
