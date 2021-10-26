@@ -1,7 +1,13 @@
 # Workarounds for ARM-based Apple-Silicon Mac
+Updated with MacBook Pro (16 inch, M1 Max, 2021) Tested on macOS Monterey (12.0) 
 This is how I get most of my configurations work with MacBook Pro (13, M1, 2020)
 Tested on macOS Big Sur (11.0.1)
-Created on Nov 17, 2020 Last update: Jan 2, 2021
+Created on Nov 17, 2020 Last update: Oct 26, 2021
+
+## M1Max updates
+Yes, I've got the new 16 inch. And this time it will replace my main workstation. So instead of a side project it will be my daily drive.
+
+Setups will be updated.
 
 ## Updates
 A new version of homebrew has been released that supports Apple-Silicon Mac natively. You can install the latest version (2.7.1 or above) and get things up and running. Some packages are now offering prebuilt bottles for arm macs. You can just download and pour the bottles instead of building all the packages from source. Some packages might still require you to build them from source, but there has been few compatibility issues. The whole process is much easier now compared to a few months ago when I first wrote this guide. 
