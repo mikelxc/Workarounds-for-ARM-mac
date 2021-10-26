@@ -24,7 +24,7 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-### Brew Cask
+### Brew Packages and Casks
 I use brew cask to install all my applications, 
 You will have to agree to Xcode license before installation. 
 
@@ -34,8 +34,32 @@ sudo xcodebuild -license accept
 
 An easy way for bulk installation is to keep a list of all the applications you have and use this shell script to install every apps on the list.
 
+It works for both packages (like python, git, neovim) and applications (steam, chrome, vscode)
+
 An example would look like this
 ``` bash 
+declare -a packages=(
+  'aria2'
+  'git'
+  'go'
+  'gpg2'
+  'mas'
+  'mongodb'
+  'neovim'
+  'node'
+  'python3'
+  'ruby'
+  'tmux'
+  'vim'
+  'wine'
+  'winetricks'
+  'wget'
+)
+
+for pkg in "${packages[@]}"; do
+  brew install "$pkg"
+done
+
 declare -a cask_apps=(
   'notion'
   'steam'
@@ -44,7 +68,7 @@ declare -a cask_apps=(
 )
 
 for app in "${cask_apps[@]}"; do
-  brew cask install "$app"
+  brew install "$app"
 done
 ```
 
