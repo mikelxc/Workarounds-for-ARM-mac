@@ -1,4 +1,4 @@
-# Workarounds for ARM-based Apple-Silicon Mac
+# Workarounds and Setups for ARM-based Apple-Silicon Mac
 Updated with MacBook Pro (16 inch, M1 Max, 2021) Tested on macOS Monterey (12.0) 
 
 Created on Nov 17, 2020 Last update: Oct 26, 2021
@@ -73,6 +73,20 @@ done
 ```
 
 ### Shell
+
+The terminal emulator I've been using is iTerm2, it supports arm natively and has extremely good integration with tmux and zsh.
+
+`brew install iterm2`
+
+The theme and fonts I use is [Nord](https://www.nordtheme.com) and [Fira Code Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip)
+
+I also use brew for fonts. You can install a huge selection of fonts from [cask-fonts](https://github.com/Homebrew/homebrew-cask-fonts) after adding it to your tap.
+
+```bash
+brew tap homebrew/cask-fonts
+brew install font-fira-code-nerd-font
+```
+
 I've been using zsh and [prezto](https://github.com/sorin-ionescu/prezto) as the plugin manager
 
 
