@@ -1,13 +1,66 @@
 # Workarounds for ARM-based Apple-Silicon Mac
 Updated with MacBook Pro (16 inch, M1 Max, 2021) Tested on macOS Monterey (12.0) 
-This is how I get most of my configurations work with MacBook Pro (13, M1, 2020)
-Tested on macOS Big Sur (11.0.1)
+
 Created on Nov 17, 2020 Last update: Oct 26, 2021
 
 ## M1Max updates
-Yes, I've got the new 16 inch. And this time it will replace my main workstation. So instead of a side project it will be my daily drive.
+Yes, I've got the new 16 inch. And this time it will replace my main workstation. So instead of a side project it will be my daily driver.
+
+### Homebrew 
+Apple Silicon is now fully supported by homebrew.
+``` bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Xcode commandline is required and there will be a propt for installation if it's not yet set up on your device.
+
+However, brew is not automatically added to the path, you will have to manually add it to your zsh profile.
+It's located at `~/.zprofile`. You can copy `eval "$(/opt/homebrew/bin/brew shellenv)"` and manually add it to the end of that file or use the script below.
+The previous workaround by adding it to the zshrc also works
+
+
+``` bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+### Brew Cask
+I use brew cask to install all my applications, 
+You will have to agree to Xcode license before installation. 
+
+``` bash
+sudo xcodebuild -license accept
+```
+
+An easy way for bulk installation is to keep a list of all the applications you have and use this shell script to install every apps on the list.
+
+An example would look like this
+``` bash 
+declare -a cask_apps=(
+  'notion'
+  'steam'
+  'visual-studio-code'
+ #  Other apps you have goes here
+)
+
+for app in "${cask_apps[@]}"; do
+  brew cask install "$app"
+done
+```
+
+### Shell
+I've been using zsh and [prezto](https://github.com/sorin-ionescu/prezto) as the plugin manager
+
 
 Setups will be updated.
+
+
+-------------------------------------------------------
+
+
+This is how I get most of my configurations work with MacBook Pro (13, M1, 2020)
+Tested on macOS Big Sur (11.0.1)
+
 
 ## Updates
 A new version of homebrew has been released that supports Apple-Silicon Mac natively. You can install the latest version (2.7.1 or above) and get things up and running. Some packages are now offering prebuilt bottles for arm macs. You can just download and pour the bottles instead of building all the packages from source. Some packages might still require you to build them from source, but there has been few compatibility issues. The whole process is much easier now compared to a few months ago when I first wrote this guide. 
