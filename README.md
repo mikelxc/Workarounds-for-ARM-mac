@@ -143,6 +143,12 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 
 I often switch back and forth between gpg-agent and ssh-agent, so I kept it as a function.
 
+### Keyboard Configuration
+
+I use karabiner-elements for the keyboard configuration. This can also be installed using `brew install karabiner-elements`.
+
+Your settings can be found in `~/.config/karabiner/assets/complex_modifications/`
+
 ### Python and ML
 
 Python is natively supported by apple silicon macs.
