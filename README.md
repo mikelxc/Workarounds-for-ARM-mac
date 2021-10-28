@@ -89,6 +89,49 @@ brew install font-fira-code-nerd-font
 
 I've been using zsh and [prezto](https://github.com/sorin-ionescu/prezto) as the plugin manager
 
+To install, use this command to clone prezto to your home directory
+
+```bash
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+```
+After it's done, use this command to generate a config file.
+
+```bash
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+```
+You can then work on `~/.zpreztorc` for plugins and settings.
+
+A copy of my updated zpreztorc file can be found [here](https://github.com/mikelxc/ohmyconfig/blob/master/.zpreztorc). I've enabled autosuggestions, highlighting, fast directory change based on [fasd](https://github.com/clvv/fasd) and some other features. 
+
+
+### Python and ML
+Python is natively supported by apple silicon macs. 
+However, at the time of writing, anaconda and miniconda still haven't supported arm yet.
+The best available is [miniforge](https://github.com/conda-forge/miniforge#readme), a minimal installer for Conda specific to conda-forge. The installation guide can be found on their homepage, but easiest way is to install it with brew.
+```bash
+brew install miniforge
+```
+After that, you will have to initialize it for your shell. 
+
+```bash
+conda init zsh
+```
+
+Afterwards, you can you conda to create environments and use it it host your packages.
+
+### TensorFlow
+This is the only major ML framework that's natively supported.
+
+Apple even released their own support package to improve the performance. More information can be found [here](https://developer.apple.com/metal/tensorflow-plugin/)
+
+```bash
+conda install -c apple tensorflow-deps
+python -m pip install tensorflow-macos
+python -m pip install tensorflow-metal
+```
 
 Setups will be updated.
 
