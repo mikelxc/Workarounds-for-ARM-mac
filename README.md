@@ -179,6 +179,14 @@ python -m pip install tensorflow-macos
 python -m pip install tensorflow-metal
 ```
 
+### Windows Applications and Wine
+
+Well, I don't really need windows applications to run on my mac. But I would really like to see how it performs. And it just seems to be a great challenge. And
+
+[Wine](https://www.winehq.org) has dropped their official support for macOS. But I've been able to get their source code and get some version of it running on my mac...
+
+For some reason, the latest verisign I've been able to compile is 6.17. However, it still need quite a lot time to get some software running. It's going to be much easier to just purchase a copy of crossover or parallels desktop.
+
 Setups will be updated.
 
 ---
