@@ -1,8 +1,8 @@
 # Workarounds and Setups for ARM-based Apple-Silicon Mac
 
-Updated with MacBook Pro (16 inch, M1 Max, 2021) Tested on macOS Monterey (12.0.1)
+Updated with MacBook Pro (16 inch, M1 Max, 2021) Tested on macOS Monterey (12.1)
 
-Created on Nov 17, 2020 Last update: Oct 28, 2021
+Created on Nov 17, 2020 Last update: Jan 7, 2022
 
 ## M1Max updates
 
@@ -177,6 +177,15 @@ Apple even released their own support package to improve the performance. More i
 conda install -c apple tensorflow-deps
 python -m pip install tensorflow-macos
 python -m pip install tensorflow-metal
+```
+
+### Java
+
+Java 12 can be installed as a homebrew package. However, openjdk will not be automatically added to your path. To use it directly in the terminal you have to use the following command:
+
+```bash
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+echo 'export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"' >> ~/.zshrc
 ```
 
 ### Windows Applications and Wine
